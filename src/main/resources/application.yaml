@@ -1,0 +1,13 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: config-server
+  cloud:
+    config:
+      server:
+        git:
+          s3:
+            bucket: ${AWS_BUCKET_NAME}
+            region: ap-southeast-1
