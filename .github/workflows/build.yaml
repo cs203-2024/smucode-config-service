@@ -2,7 +2,7 @@ name: Build image and push to ECR
 
 on: # workflow trigger on manual, PR & push to dev
   push:
-    branches: [dev, prod]
+    branches: [dev, main]
   workflow_dispatch:
 
 permissions:
@@ -31,7 +31,7 @@ jobs:
 
       - name: Set environment variables
         run: |
-          if [[ "${{ github.ref }}" == "refs/heads/prod" ]]; then
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
             echo "SPRING_PROFILE=prod" >> $GITHUB_ENV
             echo "DOCKER_TAG=prod" >> $GITHUB_ENV
           else
