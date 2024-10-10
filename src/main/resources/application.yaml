@@ -4,10 +4,19 @@ server:
 spring:
   application:
     name: config-server
+  profiles:
+    active: awss3
   cloud:
     config:
       server:
-        git:
-          s3:
-            bucket: ${AWS_BUCKET_NAME}
-            region: ap-southeast-1
+        awss3:
+          region: ap-southeast-1
+          bucket: **removed bucket name**
+
+eureka:
+  client:
+    enabled: true
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: ${EUREKA_CLIENT_SERVICEURL_DEFAULTZONE:http://localhost:8761/eureka/}
