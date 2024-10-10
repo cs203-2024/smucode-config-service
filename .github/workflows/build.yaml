@@ -32,15 +32,13 @@ jobs:
       - name: Set environment variables
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "SPRING_PROFILE=prod" >> $GITHUB_ENV
             echo "DOCKER_TAG=prod" >> $GITHUB_ENV
           else
-            echo "SPRING_PROFILE=local" >> $GITHUB_ENV
             echo "DOCKER_TAG=dev" >> $GITHUB_ENV
           fi
 
       - name: Build with Maven
-        run: mvn clean package -Dspring.profiles.active=${{ env.SPRING_PROFILE }}
+        run: mvn clean package -Dspring.profiles.active=awss3
 
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
