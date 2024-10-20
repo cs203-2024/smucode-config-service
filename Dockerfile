@@ -16,6 +16,6 @@ USER spring
 EXPOSE 8888
 
 HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=5 \
-  CMD curl -f http://localhost:8081/actuator/health || exit 1
+  CMD curl -f http://localhost:8888/actuator/health || exit 1
 
 ENTRYPOINT ["java", "-jar", "smucode-config-server.jar"]
