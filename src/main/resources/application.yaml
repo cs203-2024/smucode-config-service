@@ -10,8 +10,8 @@ spring:
     config:
       server:
         awss3:
-          region: ap-southeast-1
-          bucket: **removed bucket name**
+          region: ${AWS_REGION:ap-southeast-1}
+          bucket: ${AWS_CONFIG_BUCKET_NAME}
 
 eureka:
   client:
